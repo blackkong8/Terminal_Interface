@@ -1,9 +1,17 @@
+/**
+ * @file raw_mode.h
+ */
 typedef enum
 {
     Enable,
     Disable
 } state;
 
+/**
+ * @brief Console raw mode Enable/Disable
+ * 
+ * @param State enum{Enable, Disable}
+ */
 void raw_mode(state State);
 
 #if __has_include(<windows.h>)
