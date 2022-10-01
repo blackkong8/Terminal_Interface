@@ -12,8 +12,8 @@ struct terminal_size
 
 /**
  * @brief Get the terminal size object
- * 
- * @return struct terminal_size 
+ *
+ * @return struct terminal_size
  */
 struct terminal_size get_terminal_size(void);
 
@@ -32,7 +32,7 @@ struct terminal_size get_terminal_size(void)
 }
 #elif __has_include(<sys/ioctl.h>)
 #include <sys/ioctl.h>
-#define STDOUT_FILENO 1 //from <unistd.h>
+#define STDOUT_FILENO 1 // from <unistd.h>
 struct terminal_size get_terminal_size(void)
 {
     struct winsize w;
@@ -42,7 +42,7 @@ struct terminal_size get_terminal_size(void)
     return (struct terminal_size){w.ws_row, w.ws_col};
 }
 #else
-#error [terminal_size.h] Platform not supported
+#error[terminal_size.h] Platform not supported
 #endif
 
 #endif
