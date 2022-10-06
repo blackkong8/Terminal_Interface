@@ -9,7 +9,7 @@ typedef enum
 
 /**
  * @brief Console raw mode Enable/Disable
- * 
+ *
  * @param State enum{Enable, Disable}
  */
 void raw_mode(state State);
@@ -28,6 +28,10 @@ void raw_mode(state State)
         HANDLE console = GetStdHandle(STD_INPUT_HANDLE);
 
         GetConsoleMode(console, &raw);
+        /**
+         * @todo add ISIG, IEXTEN / IXON, ICRNL / OPOST
+         *
+         */
         raw &= ~(ENABLE_ECHO_INPUT | ENABLE_LINE_INPUT);
         SetConsoleMode(console, raw);
     }
@@ -51,7 +55,10 @@ void raw_mode(state State)
         struct termios raw = orig_termios;
 
         int i = tcgetattr(STDIN_FILENO, &raw);
-        raw.c_lflag &= ~(ECHO | ICANON);
+        raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
+        raw.c_oflag &= ~(OPOST);
+        raw.c_cflag |= (CS8);
+        raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG);
         tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
     }
     else if (State == Disable)
