@@ -12,7 +12,7 @@ typedef struct Image
     array2d raw;
 } image;
 
-int writeImg(image img)
+void writeImg(image img)
 {
     FILE *pgmimg = fopen(img.image_name, "wb");
     array2d raw = img.raw;
@@ -30,6 +30,4 @@ int writeImg(image img)
     }
 
     fclose(pgmimg);
-
-    return 0;
 }

@@ -33,6 +33,21 @@ console print mouse absolute location [Apple Only]
 * Support Posix
 
 ### createImg.h
+```void writeImg(image img);```
+```
+typedef struct Image
+{
+    char *image_name;
+    int scale;
+    array2d raw;
+} image;
+```
+```
+typedef struct Array2d
+{
+    int width, height, *data;
+} array2d;
+```
 
 ### lambda.h
 ```
