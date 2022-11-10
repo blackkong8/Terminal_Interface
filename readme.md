@@ -50,6 +50,7 @@ typedef struct Array2d
 ```
 
 ### lambda.h
+example/lambda.c
 ```
 void (lambda_ptr f)(void) = lambda(
     void, (void){printf("Hello, world!\n");}
