@@ -18,6 +18,7 @@ struct terminal_size
 ```
 
 ### raw_mode.h
+example/raw_mode_test.c
 ```void raw_mode(state State);```
 ```
 typedef enum
